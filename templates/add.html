@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% from 'bootstrap5/form.html' import render_form %}
+{% block title %}Add a New Cafe{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-8">
+            <h1>Add a new cafe into the database</h1>
+            {{ render_form(form, novalidate=True) }}
+            <form method="POST" action="{{ url_for('add_cafe') }}">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    {{ form.cafe.label(class="form-label") }}
+                    {{ form.cafe(class="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ form.location.label(class="form-label") }}
+                    {{ form.location(class="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ form.open.label(class="form-label") }}
+                    {{ form.open(class="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ form.close.label(class="form-label") }}
+                    {{ form.close(class="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ form.coffee.label(class="form-label") }}
+                    {{ form.coffee(class="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ form.wifi.label(class="form-label") }}
+                    {{ form.wifi(class="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ form.power.label(class="form-label") }}
+                    {{ form.power(class="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-primary") }}
+                </div>
+            </form>
+            <p class="space-above"><a href="{{ url_for('cafes') }}">See all cafes</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
